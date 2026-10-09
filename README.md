@@ -321,7 +321,345 @@ def linearā_meklēšana():
 if __name__ == "__main__":
     linearā_meklēšana()
 
-    
+    izskaidro kas ir šis kods; vecums = int(ievade), if __name__ == "__main__":
+
+Šeit ir vienkāršs un skaidrs skaidrojums abiem šiem bieži izmantotajiem Python koda fragmentiem:
+
+1. vecums = int(ievade)
+Šī rinda veic divas svarīgas lietas: pārveido datu tipu un saglabā to mainīgajā.
+
+ievade: Šis parasti ir mainīgais, kurā saglabāts tas, ko lietotājs ievadīja, izmantojot input() funkciju. Svarīgi atcerēties, ka Python visu no tastatūras ievadīto uztver kā tekstu (virkni jeb str), pat ja lietotājs ievadīja ciparus, piemēram, "15".
+
+int(...): Šī iebūvētā funkcija konvertē (pārveido) tekstu par veselu skaitli (angļu valodā integer). Piemēram, tā pārvērš tekstu "15" par īstu skaitli 15.
+
+vecums =: Iegūto skaitli tā saglabā jaunā mainīgajā ar nosaukumu vecums.
+
+Kāpēc tas ir vajadzīgs? Lai ar ievadīto vērtību varētu veikt matemātiskas darbības vai salīdzinājumus (piemēram, pārbaudīt, vai vecums >= 18). Ja mēs mēģinātu salīdzināt tekstu "15" ar skaitli 18, Python izmestu kļūdu.
+
+2. if __name__ == "__main__":
+Šis ir ļoti izplatīts Python nosacījums, ko bieži dēvē par "galveno ieejas punktu" (main entry point). Tas pasaka programmai: izpildi šo kodu tikai tad, ja šis fails tiek palaists tieši.
+
+Kā tas strādā? Python, palaižot jebkuru failu, tam automātiski piešķir īpašu sistēmas mainīgo __name__.
+
+Ja tu palaid šo failu tieši (piemēram, terminālī izpildot komandu python 07_skaitlu_analizators.py), Python šī mainīgā vērtību iestata kā "__main__".
+
+Ja šo failu vēlāk importē kā moduli kādā citā Python programmā, __name__ būs faila nosaukums, nevis "__main__".
+
+Kāpēc to izmanto? Tas ļauj tev droši rakstīt kodu, kas automātiski palaižas, kad tu testē savu skriptu, bet neļauj šim kodam nejauši izpildīties, ja kāds cits fails tavu kodu vienkārši importē.
+
+Vai tev ir vēl kādi jautājumi par to, kā strādā konkrētas Python rindas vai konstrukcijas?
+
+izskaidro kas ir if, else un elif
+
+if, elif un else ir nosacījumu operatori (zarošanās konstrukcijas), ko programmēšanā izmanto, lai programma varētu pieņemt lēmumus.
+
+Tie ļauj datoram izvēlēties, kuru koda daļu izpildīt atkarībā no tā, vai kāds nosacījums ir patiess (True) vai nepatiess (False).
+
+1. if (Ja)
+Šis ir pats pirmais solis. if pārbauda vienu noteiktu nosacījumu.
+
+Ja nosacījums ir patiess, tiek izpildīts kods, kas atrodas zem if.
+
+Ja nosacījums ir nepatiess, šis kods tiek izlaists.
+
+2. elif (Citā gadījumā, ja... / else if)
+Šo izmanto tad, ja tev ir vairāki iespējamie varianti. elif tiek pārbaudīts tikai tad, ja iepriekšējais if (vai cits elif) izrādījās nepatiess. Programmā var būt vairāki elif bloki pēc kārtas.
+
+3. else (Pretējā gadījumā)
+Šis ir "drošības tīkls". else nenorāda nekādu konkrētu nosacījumu — tas nostrādā automātiski tad, ja neviens no iepriekšējiem if vai elif nosacījumiem nebija patiess.
+
+Praktisks piemērs
+Iedomājies programmu, kas pasaka, kādā vecuma grupā tu esi:
+
+Python
+vecums = 15
+
+if vecums < 13:
+    print("Tu esi bērns.")
+elif vecums < 18:
+    print("Tu esi pusaudzis.")
+else:
+    print("Tu esi pieaugušais.")
+Kā tas strādā šajā piemērā:
+
+Programma pārbauda pirmos vārtus: if vecums < 13 (vai 15 ir mazāks par 13?). Tā kā nē, šis tiek izlaists.
+
+Programma pāriet pie nākamajiem vārtiem: elif vecums < 18 (vai 15 ir mazāks par 18?). Tā kā jā, programma izpilda šo rindu un izdrukā: "Tu esi pusaudzis.".
+
+Pārējais kods (tostarp else) tiek pilnībā izlaists, jo viens atbilstošs variants jau tika atrasts.
+
+izskaidro šis, print(f"\nSkaitļa {skaitlis} reizināšanas tabula:")
+
+    for i in range(1, 11):
+
+        rezultats = skaitlis * i
+
+        print(f"{skaitlis} x {i} = {rezultats}")
+
+Šis kods ir vienkārša un eleganta programma, kas izveido un izdrukā konkrēta skaitļa reizināšanas tabulu (no 1 līdz 10).
+
+Sadalīsim šo kodu pa rindiņām, lai saprastu, kas tieši tur notiek:
+
+1. Virsraksta izdruka
+Python
+print(f"\nSkaitļa {skaitlis} reizināšanas tabula:")
+\n: Šis simbols nozīmē "jauna linderinda" (newline). Tas pirms teksta ievieto vienu tukšu rindu, lai skats terminālī būtu pārskatāmāks.
+
+f"..." (f-string): Šī ir ļoti ērta Python funkcija (formatētā virkne). Tā ļauj ievietot mainīgā vērtību tieši tekstā, ierakstot mainīgā nosaukumu iekavās {skaitlis}. Piemēram, ja skaitlis ir 5, rezultāts būs: Skaitļa 5 reizināšanas tabula:.
+
+2. Cikls no 1 līdz 10
+Python
+for i in range(1, 11):
+range(1, 11): Šī funkcija ģenerē skaitļu secību no 1 līdz 10 ieskaitot (atceries, ka Python range beigu robeža ir ekskluzīva, tāpēc jāraksta 11, lai iekļautu arī skaitli 10).
+
+for i in ...: Cikls izies cauri šim blokam 10 reizes. Katrā reizē mainīgais i mainīs savu vērtību: pirmajā reizē i = 1, otrajā i = 2, un tā līdz 10.
+
+3. Reizināšanas aprēķins
+Python
+rezultats = skaitlis * i
+Šeit katrā cikla solī tiek reizināts lietotāja ievadītais pamatskaitlis (skaitlis) ar pašreizējo cikla skaitli (i).
+
+Iegūtais rezultāts tiek saglabāts mainīgajā rezultats.
+
+4. Soli pa solim drukāšana
+Python
+print(f"{skaitlis} x {i} = {rezultats}")
+Arī šeit tiek izmantota f-string virkne, lai skaisti parādītu pilnu reizināšanas izteiksmi.
+
+Piemēram, ja skaitlis ir 5 un i ir 3, uz ekrāna parādīsies: 5 x 3 = 15.
+
+Kopsavilkums
+Ja tu palaistu šo kodu un mainīgais skaitlis būtu 4, uz ekrāna izskrietu šāds rezultāts:
+
+Plaintext
+Skaitļa 4 reizināšanas tabula:
+4 x 1 = 4
+4 x 2 = 8
+4 x 3 = 12
+...
+4 x 10 = 40
+Vai tev ir skaidrs, kā strādā f-string (f"...") vai cikli, vai vēlies vēl kādu piemēru?
+
+try:
+
+        n = int(ievade)
+
+    except ValueError:
+
+        print("Kļūda: Lūdzu, ievadi derīgu veselu skaitli, nevis tekstu.")
+
+        return 
+
+Šis ir ļoti svarīgs un noderīgs koda fragments, ko izmanto kļūdu apstrādei (error handling) Python programmā. Tas neļauj programmai "uzkārties" vai sabojāties, ja lietotājs ievada nepareizus datus.
+
+Sadalīsim šo kodu pa daļām:
+
+1. try: (Mēģināt)
+Nozīme: Programma mēģina izpildīt kodu, kas atrodas zem šī bloka. Šajā gadījumā tā mēģina izdarīt šo: n = int(ievade) (pārvērst lietotāja ievadīto tekstu par veselu skaitli).
+
+Ja viss ir kārtībā un lietotājs ievadīja, piemēram, skaitli 5, programma mierīgi turpina darbu tālāk un ignorē except daļu.
+
+2. except ValueError: (Izņēmums / Kļūdas ķeršana)
+Nozīme: Šis bloks "noķer" konkrētu kļūdu — ValueError (vērtības kļūda).
+
+Tas nostrādā tad, ja lietotājs ievade vietā ierakstīja kaut ko citu, ko nav iespējams pārvērst par skaitli (piemēram, burtus "abc" vai vārdu "sveiki"). Bez šī koda programma vienkārši apstātos ar sarkanu kļūdas paziņojumu.
+
+3. Kļūdas ziņojums un return
+print(...): Parāda lietotājam saprotamu un draudzīgu paziņojumu latviešu valodā, kas paskaidro, kas nogāja greizi.
+
+return: Pārtrauc funkcijas darbību. Tā pasaka programmai: "Tā kā dati nav pareizi, mēs tālāk neturpinām, un šo funkciju beidzam."
+
+Kopsavilkums
+Šo konstrukciju izmanto, lai padarītu programmu drošu un lietotājam draudzīgu (user-friendly). Tā vietā, lai programma avarētu, tā laipni pasaka lietotājam: "Klau, tu ievadīji burtus, lūdzu, pamēģini vēlreiz!"
+
+# Aprēķinām summu ar for ciklu
+
+    summa = 0
+
+    for i in range(1, n + 1):
+
+        summa += i
+
+
+
+    print(f"Skaitļu summa no 1 līdz {n} ir: {summa}")
+
+Šis kods aprēķina visu veselo skaitļu summu no 1 līdz izvēlētajam skaitlim n, izmantojot for ciklu. Tas ir klasisks veids, kā saskaitīt kopā veselu skaitļu virkni.
+
+Sadalīsim šo kodu pa daļām, lai redzētu, kā tas strādā soli pa solim:
+
+1. Mainīgā sagatavošana
+Python
+summa = 0
+Pirms sākam skaitīt, mēs izveidojam mainīgo summa un piešķiram tam vērtību 0.
+
+Šajā mainīgajā mēs soli pa solim uzkrāsim kopējo summu. Ja mēs to nepiešķirtu, programma nezinātu, no kura punkta sākt skaitīšanu.
+
+2. Cikls caur skaitļiem
+Python
+for i in range(1, n + 1):
+range(1, n + 1): Šeit tiek izveidota virkne no 1 līdz n. Tā kā Python beigu robeža ir ekskluzīva, mēs rakstīsim n + 1, lai iekļautu arī pašu skaitli n.
+
+for i in ...: Cikls izies cauri visiem šiem skaitļiem pa vienam. Pirmajā reizē i = 1, otrajā reizē i = 2, un tā tālāk, līdz tas sasniedz n.
+
+3. Summas uzkrāšana
+Python
+summa += i
+Šis ir saīsinājums pierakstam summa = summa + i.
+
+Katrā cikla solī tas pieskaita pašreizējo skaitli i pie jau esošās summas.
+
+Piemērs, ja n = 3:
+
+Sākumā: summa = 0
+
+solis (i = 1): summa kļūst par 0 + 1 = 1
+
+solis (i = 2): summa kļūst par 1 + 2 = 3
+
+solis (i = 3): summa kļūst par 3 + 3 = 6
+
+4. Rezultāta izdruka
+Python
+print(f"Skaitļu summa no 1 līdz {n} ir: {summa}")
+Kad cikls ir beidzies un visi skaitļi ir saskaitīti, programma izmanto f-string, lai smuki parādītu gala rezultātu uz ekrāna.
+
+Vai zināji?
+Matemātikā šo pašu summu (no 1 līdz n) var aprēķināt uzreiz ar vienu vienkāršu formulas rindiņu bez cikla:
+
+summa = n * (n + 1) // 2 (tā sauktā Gausa formula). Taču for cikls ir lielisks veids, kā programmēšanā mācīties saprast, kā dati tiek apstrādāti soli pa solim!
+
+skaitlis = float(ievade_skaitlis), print(f"\nRezultāts:") print(f"Mazākais skaitlis: {mazakais:g}")
+
+    print(f"Lielākais skaitlis: {lielakais:g}")
+
+Šis koda fragments parāda, kā pārvērst ievadīto tekstu par daļskaitli un kā skaisti noformatēt gala rezultātus, izmantojot īpašu formatējuma burtu :g.
+
+Sadalīsim to trīs daļās:
+
+1. skaitlis = float(ievade_skaitlis)
+ievade_skaitlis: Tā ir mainīgā virkne, kurā saglabāts tas, ko lietotājs ievadīja (piemēram, teksts "5.5").
+
+float(...): Šī funkcija pārveido tekstu par daļskaitli (angļu valodā floating-point number). Atšķirībā no int() (kas strādā tikai ar veseliem skaitļiem, piemēram, 5), float saprot arī decimāldaļas ar punktu, piemēram, 5.5 vai -3.14.
+
+skaitlis =: Iegūtais skaitlis tiek saglabāts mainīgajā skaitlis, lai ar to varētu veikt matemātiskas darbības.
+
+2. print(f"\nRezultāts:")
+Šis ir vienkāršs paziņojums, kas izdrukā uz ekrāna virsrakstu Rezultāts:.
+
+Simbols \n pirms vārda izveido vienu tukšu rindu pirms teksta, lai terminālis izskatītos glītāks un pārskatāmāks.
+
+3. print(f"Mazākais skaitlis: {mazakais:g}") un {lielakais:g}
+Šeit galvenā uzmanība jāpievērš simbolam :g iekavās aiz mainīgā nosaukuma:
+
+Kas ir :g? Python f-string virknēs :g (no angļu valodas general format) ir formatējuma rīks, kas palīdz skaitļiem izskatīties smukāk un dabiskāk:
+
+Tas automātiski notīra liekās nulles aiz komata. Piemēram, ja skaitlis ir 5.0, tas ekrānā parādīs vienkārši 5, bet, ja tas ir 5.5, tas parādīs 5.5.
+
+Tas arī pasargā garus decimāldaļskaitļus no pārliekas garuma (ja cipars aiz komata ir ļoti garš).
+
+Kopumā šīs rindiņas parāda lietotājam agrāk aprēķināto minimālo un maksimālo skaitli tīrā un viegli lasāmā veidā!
+
+pirmais_indekss = -1
+
+    visi_indeksi = [], # Ar ciklu un enumerate pārbaudām saraksta elementus pēc kārtas
+
+    for indekss, vertiba in enumerate(skaitli):
+
+        if vertiba == meklejamo:
+
+            if pirmais_indekss == -1:
+
+                pirmais_indekss = indekss
+
+            visi_indeksi.append(indekss), if pirmais_indekss != -1: 
+
+Šis koda fragments ir ļoti noderīgs algoritms, lai atrastu konkrētas vērtības atrašanās vietas (indeksus) sarakstā. Tas atrod gan pašu pirmo reizi, kur šis skaitlis parādās, gan visas pārējās reizes, ja skaitlis sarakstā atkārtojas vairākas reizes.
+
+Sadalīsim šo kodu pa daļām:
+
+1. Mainīgo sagatavošana
+Python
+pirmais_indekss = -1
+visi_indeksi = []
+pirmais_indekss = -1: Mēs izveidojam mainīgo un iestatām to uz -1. Programmēšanā -1 bieži izmanto kā signālu jeb karodziņu, kas nozīmē: "Mēs vēl neesam atraduši šo skaitli." (Tā kā saraksta indeksi vienmēr sākas no 0, -1 nevar būt reāls indekss, tāpēc tas ir drošs rādītājs).
+
+visi_indeksi = []: Mēs izveidojam tukšu sarakstu, kurā vēlāk uzkrāsim visus indeksus, kur atradīsim meklēto skaitli.
+
+2. Cikls un enumerate funkcija
+Python
+for indekss, vertiba in enumerate(skaitli):
+enumerate(skaitli): Šī ir lieliska Python funkcija. Kad tu ej cauri sarakstam skaitli, enumerate tev uzreiz pasaka divas lietas vienlaikus: pozīciju (indeksu) un pašu vērtību tajā pozīcijā.
+
+indekss saglabā skaitļa vietu sarakstā (0, 1, 2 utt.), bet vertiba saglabā tur esošo skaitli.
+
+3. Pārbaude un meklēšana
+Python
+    if vertiba == meklejamo:
+        if pirmais_indekss == -1:
+            pirmais_indekss = indekss
+        visi_indeksi.append(indekss)
+if vertiba == meklejamo:: Pārbauda, vai pašreizējais elements sakrīt ar to skaitli, ko mēs meklējam (meklejamo).
+
+if pirmais_indekss == -1:: Ja skaitlis sakrīt un mēs vēl neesam atraduši pirmo indeksu (tas joprojām ir -1), mēs saglabājam šo indeksu kā pirmais_indekss. Tā kā tas notiek pašā pirmajā sakritības reizē, tas vairs nemainīsies turpmākajos soļos.
+
+visi_indeksi.append(indekss): Neatkarīgi no tā, vai tā ir pirmā vai piektā reize, kad skaitlis atrasts, mēs pievienojam šo indeksu mūsu sarakstam visi_indeksi, izmantojot .append() metodi.
+
+4. Pēdējā rinda: if pirmais_indekss != -1:
+Tā rinda, kas tev ir pierakstīta beigās, parasti tiek izmantota uzreiz pēc cikla, lai pārbaudītu rezultātu:
+
+!= -1 nozīmē "ja tas nav vienāds ar -1" (tas ir – ja mēs vispār atradām šo skaitli sarakstā).
+
+Pēc šīs pārbaudes programma parasti izdrukā lietotājam: "Atrasts pirmajā pozīcijā ar indeksu X" vai izada visu sarakstu ar indeksiem. Ja skaitlis vispār netika atrasts, pirmais_indekss paliek -1, un programma var paziņot, ka šāda skaitļa sarakstā nav.
+
+skaitlis = float(input(f"Ievadiet {i+1}. skaitli: "))
+
+                skaitli.append(skaitlis)
+
+                break
+
+            except ValueError:
+
+                print("Nederīga vērtība. Lūdzu, ievadiet skaitli atkārtoti!"), # Pāra un nepāra skaitļi parasti attiecas uz veseliem skaitļiem
+
+    para = sum(1 for x in skaitli if x.is_integer() and int(x) % 2 == 0)
+
+    nepara = sum(1 for x in skaitli if x.is_integer() and int(x) % 2 != 0),
+
+Šis koda fragments apvieno divas svarīgas programmas daļas: drošu skaitļa saņemšanu un pievienošanu sarakstam (iekš while cikla) un pāra/nepāra skaitļu skaitīšanu (izmantojot generatoru izteiksmes).
+
+Sadalīsim to pa daļām:
+
+1. Datu ievade un saglabāšana sarakstā
+Python
+skaitlis = float(input(f"Ievadiet {i+1}. skaitli: "))
+skaitli.append(skaitlis)
+break
+float(input(...)): Programma prasa lietotājam ievadīt nākamo skaitli (piemēram, pirmajā reizē i=0, tāpēc rādīsies 1. skaitli) un uzreiz to pārvērš par daļskaitli (float).
+
+skaitli.append(skaitlis): Šī metode (.append) pievieno iegūto skaitli iepriekš izveidotajam sarakstam ar nosaukumu skaitli.
+
+break: Pārtrauc iekšējo bezgalīgo ciklu (while True), jo ievade bija veiksmīga un pareiza, un tagad var pāriet pie nākamā skaitļa vai tālākiem aprēķiniem.
+
+2. Kļūdu ķeršana (ja ievadīts teksts)
+Python
+except ValueError:
+    print("Nederīga vērtība. Lūdzu, ievadiet skaitli atkārtoti!")
+Ja lietotājs ievadīja burtus vai citus simbolus, kurus nevar pārvērst par skaitli, izlec ValueError kļūda, programma izdrukā brīdinājumu un liek lietotājam mēģināt vēlreiz (jo cikls turpinās).
+
+3. Pāra un nepāra skaitļu noteikšana
+Python
+para = sum(1 for x in skaitli if x.is_integer() and int(x) % 2 == 0)
+nepara = sum(1 for x in skaitli if x.is_integer() and int(x) % 2 != 0)
+Tā kā sarakstā var būt arī daļskaitļi (piemēram, 5.5), šis kods gudri atlasa tikai tos skaitļus, kas patiesībā ir veseli, un saskaita tos:
+
+x.is_integer(): Pārbauda, vai konkrētais skaitlis sarakstā ir vesels skaitlis (piemēram, 5.0 ir vesels, bet 5.5 nav).
+
+int(x) % 2 == 0: Pārvērš skaitli par veselu skaitli un ar dalīšanas atlikuma zīmi (%) pārbauda, vai tas dalās ar 2 bez atlikuma (pāra skaitlis). Ja atlikums ir 0, tad tas ir pāra skaitlis.
+
+int(x) % 2 != 0: Pārbauda, vai dalīšanas atlikums, dalot ar 2, nav nulle (tātad atlikumā paliek 1). Tas nozīmē, ka tas ir nepāra skaitlis.
+
+sum(1 for x in skaitli ...): Šis saskaita visus elementus sarakstā, kuri atbilst šim nosacījumam, un atgriež kopējo skaitu mainīgajos para un nepara.
 
 ## Šodienas darba secība
 
